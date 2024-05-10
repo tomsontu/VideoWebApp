@@ -1,0 +1,10 @@
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\bin\Debug\netcoreapp3.1\Videos.Domain.deps.json
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\bin\Debug\netcoreapp3.1\Videos.Domain.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\bin\Debug\netcoreapp3.1\Videos.Domain.pdb
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.csproj.AssemblyReference.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.AssemblyInfoInputs.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.AssemblyInfo.cs
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.csproj.CoreCompileInputs.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Domain\obj\Debug\netcoreapp3.1\Videos.Domain.pdb

@@ -1,0 +1,15 @@
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Application.deps.json
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Application.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Application.pdb
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Database.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Domain.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Database.pdb
+D:\Users\15380\Source\Repos\Videos\Videos.Application\bin\Debug\netcoreapp3.1\Videos.Domain.pdb
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.csproj.AssemblyReference.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.AssemblyInfoInputs.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.AssemblyInfo.cs
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.csproj.CoreCompileInputs.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.A.314A6912.Up2Date
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.dll
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.pdb
