@@ -21,4 +21,8 @@
 		<ProjectReference Include="..\Videos.Application\Videos.Application.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\" />
+	</ItemGroup>
+
 </Project>

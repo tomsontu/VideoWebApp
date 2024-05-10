@@ -9,14 +9,16 @@
 		<th>Create Time</th>
 		<th>Like ♥</th>
 		<th>Duration</th>
+		<th>Action</th>
 
 		<tr v-for="(video, index) in displayedVideos" :key="index">
-			<td>{{video.id}}</td>
-			<td>{{video.authorName}}</td>
+			<td><a v-bind:href="video.videoUrl">{{video.id}}</a></td>
+			<td><a v-bind:href="'https://www.tiktok.com/@@'+video.authorId">{{video.authorName}}</a></td>
 			<td>{{video.description}}</td>
 			<td>{{video.createTime}}</td>
 			<td>{{video.diggCount}}</td>
 			<td>{{video.duration}}s</td>
+			<td><a v-bind:href="'/video/videos/'+video.videoId">View</a></td>
 		</tr>
 	</table>
 

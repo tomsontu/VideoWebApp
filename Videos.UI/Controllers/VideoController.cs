@@ -19,5 +19,11 @@ namespace Videos.UI.Controllers
 		{
 			return Ok(new GetVideos(_context).Do());
 		}
+
+		[HttpGet("videos/{videoId}")]
+		public IActionResult GetVideo(string videoId)
+		{
+			return View("~/Pages/VideoDetail.cshtml", new GetVideo(_context).Do(videoId));
+		}
 	}
 }

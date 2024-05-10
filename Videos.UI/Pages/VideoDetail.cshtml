@@ -1,0 +1,41 @@
+﻿@model Videos.Application.Video.GetVideo.VideoViewModel
+@{
+	string authorQuote = "@" + Model.AuthorName;
+}
+<div class="myContainer">
+	<table>
+		<tr>
+			<td>
+				<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@authorQuote/video/@Model.VideoId"
+							data-video-id="@Model.VideoId" style="max-width: 605px;min-width: 325px;">
+					<section> </section>
+				</blockquote>
+			</td>
+			<td>
+				@Model.CreateTime
+			</td>
+		</tr>
+	</table>
+</div>
+<script async src="https://www.tiktok.com/embed.js"></script>
+
+@section HeadContent {
+	<style type="text/css">
+		.myContainer {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh; /* Adjust as needed */
+		}
+
+		table {
+			border-collapse: separate;
+			border-spacing: 100px;
+		}
+
+		td {
+			border: 1px solid black; /* For demonstration purposes */
+			padding: 10px; /* Optional: Add padding to cells */
+		}
+	</style>
+}

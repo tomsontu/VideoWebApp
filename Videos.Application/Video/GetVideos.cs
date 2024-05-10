@@ -21,11 +21,13 @@ namespace Videos.Application.Video
         {
             public int Id { get; set; }
             public string VideoId { get; set; }
-            public string AuthorName { get; set; }
+			public string AuthorId { get; set; }
+			public string AuthorName { get; set; }
             public string Description { get; set; }
             public string CreateTime { get; set; }
             public string DiggCount { get; set; }
             public string Duration { get; set; }
+            public string VideoUrl { get; set; }
 
         }
 
@@ -36,10 +38,12 @@ namespace Videos.Application.Video
                 JToken jToken = JsonConvert.DeserializeObject<JToken>(x.JsonString);
 
                 string authorName = jToken.SelectToken("$.author.uniqueId").Value<string>();
-                string description = jToken.SelectToken("$.contents[0].desc").Value<string>();
+				string authorId = jToken.SelectToken("$.author.id").Value<string>();
+				string description = jToken.SelectToken("$.contents[0].desc").Value<string>();
                 DateTime createTime = DateTimeOffset.FromUnixTimeSeconds(jToken.SelectToken("$.createTime").Value<long>()).UtcDateTime;
                 string diggCount = jToken.SelectToken("$.statsV2.diggCount").Value<string>();
                 string duration = jToken.SelectToken("$.video.duration").Value<int>().ToString();
+                string videoUrl = jToken.SelectToken("$.video_url").Value<string>();
 
                 return new VideoListViewModel
                 {
@@ -49,7 +53,9 @@ namespace Videos.Application.Video
                     Description = description,
                     CreateTime = createTime.ToString(),
                     DiggCount = diggCount,
-                    Duration = duration
+                    Duration = duration,
+                    VideoUrl = videoUrl,
+                    AuthorId = authorId,
                 };
             });
         }

@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videos.UI", "Videos.UI\Videos.UI.csproj", "{D8AC95D4-FA51-4598-A768-5C53A5F2AEB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Videos.UI", "Videos.UI\Videos.UI.csproj", "{D8AC95D4-FA51-4598-A768-5C53A5F2AEB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videos.Application", "Videos.Application\Videos.Application.csproj", "{3DC04F39-247B-408F-A1EF-20852B2B379B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Videos.Application", "Videos.Application\Videos.Application.csproj", "{3DC04F39-247B-408F-A1EF-20852B2B379B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videos.Database", "Videos.Database\Videos.Database.csproj", "{9C27956A-6E94-4C9A-A492-7909FA96D1F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Videos.Database", "Videos.Database\Videos.Database.csproj", "{9C27956A-6E94-4C9A-A492-7909FA96D1F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Videos.Domain", "Videos.Domain\Videos.Domain.csproj", "{85940B80-C3C2-423C-9A3C-7BA0909E9FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Videos.Domain", "Videos.Domain\Videos.Domain.csproj", "{85940B80-C3C2-423C-9A3C-7BA0909E9FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

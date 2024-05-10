@@ -13,3 +13,4 @@ D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Vi
 D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.A.314A6912.Up2Date
 D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.dll
 D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.pdb
+D:\Users\15380\Source\Repos\Videos\Videos.Application\obj\Debug\netcoreapp3.1\Videos.Application.sourcelink.json

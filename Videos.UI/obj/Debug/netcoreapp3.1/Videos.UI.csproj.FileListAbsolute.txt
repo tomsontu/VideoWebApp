@@ -383,3 +383,5 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.g
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Accounts\Login.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_AdminLayout.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewStart.cshtml.g.cs
+D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.sourcelink.json
+D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\VideoDetail.cshtml.g.cs
