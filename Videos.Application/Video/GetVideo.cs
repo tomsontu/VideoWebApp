@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Videos.Domain;
+using Videos.Database;
 
 namespace Videos.Application.Video
 {
@@ -45,7 +45,7 @@ namespace Videos.Application.Video
 				string ratio= jToken.SelectToken("$.video.ratio").Value<string>();
 				string format= jToken.SelectToken("$.video.format").Value<string>();
 				string height= jToken.SelectToken("$.video.height").Value<string>();
-				string size = (jToken.SelectToken("$.video.size").Value<int>() / 1024.0 / 1024.0).ToString() + "MB";
+				string size = (jToken.SelectToken("$.video.size").Value<int>() / 1024.0 / 1024.0).ToString("N2") + "MB";
 				string videoQuality = jToken.SelectToken("$.video.videoQuality").Value<string>();
 
 				return new VideoViewModel

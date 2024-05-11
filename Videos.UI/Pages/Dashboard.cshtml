@@ -1,0 +1,63 @@
+﻿@page
+@model Videos.UI.Pages.DashboardModel
+@{
+	List<string> labels = Model.CreatedCountByMonth.Keys.ToList().Select(x => x.Year.ToString() + "/" + x.Month.ToString()).ToList();
+	List<int> values = Model.CreatedCountByMonth.Values.ToList();
+}
+<div style="display: flex;">
+	<div style="flex: 1;">
+		<canvas id="barChart"></canvas>
+	</div>
+	<div style="flex: 1;">
+        <div style="width: 300px; height: 300px;">
+            <canvas id="pieChart"></canvas>
+        </div>
+	</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const labels = @Html.Raw(Json.Serialize(labels));
+    const values = @Html.Raw(Json.Serialize(values));
+
+    const barCtx = document.getElementById('barChart');
+    const pieCtx = document.getElementById('pieChart');
+
+    new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Creations by Month',
+                data: values,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(pieCtx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: '# of Creations by Month',
+                data: values,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+
+
+

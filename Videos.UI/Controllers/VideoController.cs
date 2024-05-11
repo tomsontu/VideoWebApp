@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Videos.Application.Video;
-using Videos.Domain;
+using Videos.Database;
 
 namespace Videos.UI.Controllers
 {

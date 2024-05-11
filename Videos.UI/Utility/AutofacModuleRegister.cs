@@ -1,5 +1,5 @@
 ﻿using Autofac;
-using Videos.Domain;
+using Videos.Database;
 
 namespace Videos.UI.Utility
 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Videos.Domain
+namespace Videos.Database
 {
     public class Video
     {

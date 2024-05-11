@@ -10,6 +10,7 @@ D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Video
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.AssemblyInfoInputs.cache
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.AssemblyInfo.cs
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.csproj.CoreCompileInputs.cache
+D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.sourcelink.json
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.D.CEF6FC17.Up2Date
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.dll
 D:\Users\15380\Source\Repos\Videos\Videos.Database\obj\Debug\netcoreapp3.1\Videos.Database.pdb

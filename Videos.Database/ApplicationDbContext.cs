@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 
-namespace Videos.Domain
+namespace Videos.Database
 {
     public class ApplicationDbContext : IdentityDbContext
     {
