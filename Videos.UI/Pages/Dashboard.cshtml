@@ -33,11 +33,19 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<div style="width: 800px">
-					<canvas id="scatterDiggPlayChart">
 
-				</div>
+				<canvas id="scatterDiggPlayChart" style="width: 800px">
 
+
+
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<canvas id="durationPieChart"></canvas>
+			</td>
+			<td>
+				<canvas id="durationBarChart" width="200" height="200"></canvas>
 			</td>
 		</tr>
 	</table>
@@ -52,7 +60,11 @@
 	const barCtx = document.getElementById('barChart');
 	const pieCtx = document.getElementById('pieChart');
 	const scatterDiggPlayCtx = document.getElementById('scatterDiggPlayChart').getContext('2d');
-
+	const durationCtx = document.getElementById('durationPieChart').getContext('2d');
+	const durationBarCtx = document.getElementById('durationBarChart').getContext('2d');
+	var durationData = @Html.Raw(Json.Serialize(Model.DurationCategoryCount));
+	var durationLabels = Object.keys(durationData);
+	var durationChartData = Object.values(durationData);
 
 	new Chart(barCtx, {
 		type: 'bar',
@@ -125,6 +137,64 @@
 						text: 'DiggCount' // X axis title
 					},
 					
+				}
+			}
+		}
+	});
+
+	new Chart(durationCtx, {
+		type: 'pie',
+		data: {
+			labels: durationLabels,
+			datasets: [{
+				label: '#',
+				data: durationChartData,
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.6)',
+					'rgba(54, 162, 235, 0.6)',
+					'rgba(255, 206, 86, 0.6)',
+					'rgba(75, 192, 192, 0.6)',
+					'rgba(153, 102, 255, 0.6)',
+					'rgba(255, 159, 64, 0.6)'
+				]
+			}]
+		},
+		options: {
+			responsive: true,
+			maintainAspectRatio: false
+		}
+	});
+
+	new Chart(durationBarCtx, {
+		type: 'bar',
+		data: {
+			labels: durationLabels,
+			datasets: [{
+				label: '#',
+				data: durationChartData,
+				backgroundColor: [
+					'rgba(255, 99, 132, 0.6)',
+					'rgba(54, 162, 235, 0.6)',
+					'rgba(255, 206, 86, 0.6)',
+					'rgba(75, 192, 192, 0.6)',
+					'rgba(153, 102, 255, 0.6)',
+					'rgba(255, 159, 64, 0.6)'
+				],
+				borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+				],
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true
 				}
 			}
 		}
