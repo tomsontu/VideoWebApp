@@ -23,6 +23,7 @@ namespace Videos.UI.Pages
         {
             SetCreatedCountByMonth();
             DiggPlayList = SetDiggPlayList();
+            SetDurationCategory();
             Console.WriteLine();
         }
 
@@ -65,8 +66,52 @@ namespace Videos.UI.Pages
             });
         }
 
-        public SortedDictionary<(int Year, int Month), int> CreatedCountByMonth { get; set; } = new SortedDictionary<(int Year, int Month), int>();
+        public void SetDurationCategory()
+        {
+            foreach (var video in _context.Videos.AsEnumerable())
+            {
+				JToken jToken = JsonConvert.DeserializeObject<JToken>(video.JsonString);
+				int duration = jToken.SelectToken("$.video.duration").Value<int>();
+				if (duration < 15)
+				{
+					IncrementDurationCount("Less than 15s");
+				}
+				else if (duration >= 15 && duration < 30)
+				{
+					IncrementDurationCount("15s to less than 30s");
+				}
+				else if (duration >= 30 && duration < 45)
+				{
+					IncrementDurationCount("30s to less than 45s");
+				}
+				else if (duration >= 45 && duration < 60)
+				{
+					IncrementDurationCount("45s to less than 60s");
+				}
+				else
+				{
+					IncrementDurationCount("60s and above");
+				}
+
+			}
+        }
+
+		private void IncrementDurationCount(string category)
+		{
+			if (DurationCategoryCount.ContainsKey(category))
+			{
+				DurationCategoryCount[category]++;
+			}
+			else
+			{
+				DurationCategoryCount[category] = 1;
+			}
+		}
+
+
+		public SortedDictionary<(int Year, int Month), int> CreatedCountByMonth { get; set; } = new SortedDictionary<(int Year, int Month), int>();
         public IEnumerable<(int DiggCount, int PlayCount)> DiggPlayList { get; set; }
+        public Dictionary<string, int> DurationCategoryCount { get; set; } = new Dictionary<string, int>();
 
     }
 
