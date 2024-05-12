@@ -24,7 +24,10 @@ namespace Videos.UI.Pages
             SetCreatedCountByMonth();
             DiggPlayList = SetDiggPlayList();
             SetDurationCategory();
-            Console.WriteLine();
+            SetAveragePlayByMonth("playCount", AveragePlayByMonth);
+            SetAveragePlayByMonth("diggCount", AverageDiggByMonth);
+
+			Console.WriteLine();
         }
 
         public void SetCreatedCountByMonth()
@@ -108,10 +111,50 @@ namespace Videos.UI.Pages
 			}
 		}
 
+        public void SetAveragePlayByMonth(string attr, SortedDictionary<(int Year, int Month), double> averageCountByMonth)
+        {
+			IEnumerable<(DateTime, int)> countByTime = _context.Videos.AsEnumerable().Select(x =>
+			{
+				JToken jToken = JsonConvert.DeserializeObject<JToken>(x.JsonString);
+                DateTime createTimes = DateTimeOffset.FromUnixTimeSeconds(jToken.SelectToken("$.createTime").Value<long>()).UtcDateTime;
+                int count = int.Parse(jToken.SelectToken($"$.statsV2.{attr}").Value<string>());
+                return (createTimes, count);
+			});
+
+			foreach (var item in countByTime)
+			{
+                int year = item.Item1.Year;
+				int month = item.Item1.Month;
+                int count = item.Item2;
+
+				// Create a tuple (Year, Month) as the key
+				var key = (Year: year, Month: month);
+
+				// Increment count for the key if it exists, otherwise add a new entry with count 1
+				if (averageCountByMonth.ContainsKey(key))
+				{
+					averageCountByMonth[key] += count;
+				}
+				else
+				{
+					averageCountByMonth.Add(key, count);
+				}
+
+            }
+
+			foreach (var dateKey in CreatedCountByMonth.Keys)
+			{
+				averageCountByMonth[dateKey] /= CreatedCountByMonth[dateKey];
+			}
+		}
+
 
 		public SortedDictionary<(int Year, int Month), int> CreatedCountByMonth { get; set; } = new SortedDictionary<(int Year, int Month), int>();
         public IEnumerable<(int DiggCount, int PlayCount)> DiggPlayList { get; set; }
         public Dictionary<string, int> DurationCategoryCount { get; set; } = new Dictionary<string, int>();
+        public SortedDictionary<(int Year, int Month), double> AveragePlayByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
+        public SortedDictionary<(int Year, int Month), double> AverageDiggByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
+
 
     }
 

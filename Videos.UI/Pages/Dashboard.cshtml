@@ -3,6 +3,8 @@
 @{
 	List<string> labels = Model.CreatedCountByMonth.Keys.ToList().Select(x => x.Year.ToString() + "/" + x.Month.ToString()).ToList();
 	List<int> values = Model.CreatedCountByMonth.Values.ToList();
+	//List<string> dateLabels = Model.CreatedCountByMonth.Keys.ToList().Select(x => x.Year.ToString() + "/" + x.Month.ToString()).ToList();
+	List<double> avgPlayValues = Model.AveragePlayByMonth.Values.ToList();
 	IEnumerable<(int DiggCount, int PlayCount)> DiggPlayList = Model.DiggPlayList;
 	var diggCounts = Model.DiggPlayList.Select(item => item.DiggCount).ToArray();
 	var playCounts = Model.DiggPlayList.Select(item => item.PlayCount).ToArray();
@@ -28,25 +30,28 @@
 <div style="display: flex; flex-wrap: wrap;">
 	<table>
 		<tr>
-			<td><canvas id="barChart"></canvas></td>
-			<td><canvas id="pieChart"></canvas></td>
-		</tr>
-		<tr>
-			<td colspan="2">
-
-				<canvas id="scatterDiggPlayChart" style="width: 800px">
-
-
-
+			<td><canvas id="barChart" width="300" height="300"></canvas></td>
+			<td><canvas id="pieChart" width="300" height="300"></canvas></td>
+			<td>
+				<canvas id="durationPieChart" width="300" height="300"></canvas>
+			</td>
+			<td>
+				<canvas id="durationBarChart" width="300" height="300"></canvas>
 			</td>
 		</tr>
 		<tr>
-			<td>
-				<canvas id="durationPieChart"></canvas>
+			<td colspan="4">
+
+				<canvas id="scatterDiggPlayChart" height="100">
+
+
 			</td>
-			<td>
-				<canvas id="durationBarChart" width="200" height="200"></canvas>
+		</tr>
+		<tr>
+			<td colspan="4">
+				<canvas id="avgLineChart" height="100"></canvas>
 			</td>
+			
 		</tr>
 	</table>
 </div>
@@ -54,14 +59,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
-	const labels = @Html.Raw(Json.Serialize(labels));
+	const labels = @Html.Raw(Json.Serialize(labels)); //date labels YYYY-M
 	const values = @Html.Raw(Json.Serialize(values));
+
+	const avgPlayValues = @Html.Raw(Json.Serialize(avgPlayValues));
 
 	const barCtx = document.getElementById('barChart');
 	const pieCtx = document.getElementById('pieChart');
 	const scatterDiggPlayCtx = document.getElementById('scatterDiggPlayChart').getContext('2d');
 	const durationCtx = document.getElementById('durationPieChart').getContext('2d');
 	const durationBarCtx = document.getElementById('durationBarChart').getContext('2d');
+	const avgLineCtx = document.getElementById('avgLineChart').getContext('2d');
+
 	var durationData = @Html.Raw(Json.Serialize(Model.DurationCategoryCount));
 	var durationLabels = Object.keys(durationData);
 	var durationChartData = Object.values(durationData);
@@ -195,6 +204,37 @@
 			scales: {
 				y: {
 					beginAtZero: true
+				}
+			}
+		}
+	});
+
+	new Chart(avgLineCtx, {
+		type: 'line',
+		data: {
+			labels: labels,
+			datasets: [{
+				label: 'My Dataset',
+				data: avgPlayValues,
+				borderColor: 'rgba(255, 99, 132, 1)', // Customize line color
+				backgroundColor: 'rgba(255, 99, 132, 0.2)', // Customize fill color
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true, // Start y-axis at 0
+					title: {
+						display: true,
+						text: 'AvgPlayCount' // Y axis title
+					},
+				},
+				x: {
+					title: {
+						display: true,
+						text: 'Month' // X axis title
+					},
 				}
 			}
 		}
