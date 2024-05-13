@@ -10,6 +10,8 @@ namespace Videos.UI.Utility
             builder.RegisterType<ApplicationDbContext>()
                 .AsSelf()
                 .InstancePerLifetimeScope();
+
+            builder.RegisterType<RedisDb>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }

@@ -9,10 +9,12 @@ namespace Videos.UI.Controllers
 	public class VideoController : Controller
 	{
 		private readonly ApplicationDbContext _context;
+        private readonly RedisDb _redisDb;
 
-		public VideoController(ApplicationDbContext context)
+        public VideoController(ApplicationDbContext context, RedisDb redisDb)
 		{
 			_context = context;
+			_redisDb = redisDb;
 		}
 
 		[HttpGet("videos")]
@@ -24,7 +26,7 @@ namespace Videos.UI.Controllers
 		[HttpDelete("videos/{videoId}")]
 		public async Task<IActionResult> DeleteVideoAsync(string videoId)
 		{
-			return Ok(await new DeleteVideo(_context).Do(videoId));
+			return Ok(await new DeleteVideo(_context, _redisDb).Do(videoId));
 		}
 
 		[HttpGet("videos/{videoId}")]
