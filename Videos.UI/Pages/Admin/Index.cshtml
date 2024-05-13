@@ -1,5 +1,7 @@
 ﻿@page
-@model IndexModel
+@model Videos.UI.Pages.Admin.IndexModel
+@{
+}
 
 <div id="app">
 	<table class="table" style="text-align:center">
@@ -10,7 +12,7 @@
 		<th>Like ♥</th>
 		<th>Duration</th>
 		<th>Remark</th>
-		<th>Action</th>
+		<th colspan="2">Action</th>
 
 		<tr v-for="(video, index) in displayedVideos" :key="index">
 			<td><a v-bind:href="video.videoUrl">{{video.id}}</a></td>
@@ -21,6 +23,7 @@
 			<td>{{video.duration}}s</td>
 			<td>{{video.remark}}</td>
 			<td><a v-bind:href="'/video/videos/'+video.videoId">View</a></td>
+			<td><button class="btn btn-danger" @@click="deleteVideo(video.videoId, index)">Delete</button></td>
 		</tr>
 	</table>
 
@@ -37,7 +40,7 @@
 
 @section scripts {
 
-	<script src="~/js/video.js"></script>
+	<script src="~/js/adminVideo.js"></script>
 
 
 }

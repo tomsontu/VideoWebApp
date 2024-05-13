@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using Videos.Application.Video;
 using Videos.Database;
 
@@ -18,6 +19,12 @@ namespace Videos.UI.Controllers
 		public IActionResult GetVideos()
 		{
 			return Ok(new GetVideos(_context).Do());
+		}
+
+		[HttpDelete("videos/{videoId}")]
+		public async Task<IActionResult> DeleteVideoAsync(string videoId)
+		{
+			return Ok(await new DeleteVideo(_context).Do(videoId));
 		}
 
 		[HttpGet("videos/{videoId}")]

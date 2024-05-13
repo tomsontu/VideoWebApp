@@ -28,6 +28,7 @@ namespace Videos.Application.Video
             public string DiggCount { get; set; }
             public string Duration { get; set; }
             public string VideoUrl { get; set; }
+            public string Remark { get; set; }
 
         }
 
@@ -49,6 +50,7 @@ namespace Videos.Application.Video
                 {
                     Id = x.Id,
                     VideoId = x.VideoId,
+                    Remark = x.Remark,
                     AuthorName = authorName,
                     Description = description,
                     CreateTime = createTime.ToString(),

@@ -9,5 +9,6 @@ namespace Videos.Database
         public int Id { get; set; }
         public string VideoId { get; set; }
         public string JsonString { get; set; }
+        public string Remark { get; set; }
     }
 }
