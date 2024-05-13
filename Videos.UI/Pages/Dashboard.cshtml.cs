@@ -24,8 +24,10 @@ namespace Videos.UI.Pages
             SetCreatedCountByMonth();
             DiggPlayList = SetDiggPlayList();
             SetDurationCategory();
-            SetAveragePlayByMonth("playCount", AveragePlayByMonth);
-            SetAveragePlayByMonth("diggCount", AverageDiggByMonth);
+            SetAverageCountByMonth("playCount", AveragePlayByMonth);
+            SetAverageCountByMonth("diggCount", AverageDiggByMonth);
+            SetAverageCountByMonth("collectCount", AverageCollectByMonth);
+            SetAverageCountByMonth("shareCount", AverageShareByMonth);
 
 			Console.WriteLine();
         }
@@ -111,7 +113,7 @@ namespace Videos.UI.Pages
 			}
 		}
 
-        public void SetAveragePlayByMonth(string attr, SortedDictionary<(int Year, int Month), double> averageCountByMonth)
+        public void SetAverageCountByMonth(string attr, SortedDictionary<(int Year, int Month), double> averageCountByMonth)
         {
 			IEnumerable<(DateTime, int)> countByTime = _context.Videos.AsEnumerable().Select(x =>
 			{
@@ -154,6 +156,8 @@ namespace Videos.UI.Pages
         public Dictionary<string, int> DurationCategoryCount { get; set; } = new Dictionary<string, int>();
         public SortedDictionary<(int Year, int Month), double> AveragePlayByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
         public SortedDictionary<(int Year, int Month), double> AverageDiggByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
+        public SortedDictionary<(int Year, int Month), double> AverageCollectByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
+        public SortedDictionary<(int Year, int Month), double> AverageShareByMonth { get; set; } = new SortedDictionary<(int Year, int Month), double>();
 
 
     }

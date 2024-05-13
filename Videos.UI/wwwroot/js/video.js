@@ -2,7 +2,7 @@ var app = new Vue({
     el: "#app",
     data: {
         videos: [],
-        pageSize: 5, // Number of videos per page
+        pageSize: 8, // Number of videos per page
         currentPage: 1, // Current page number
     },
 

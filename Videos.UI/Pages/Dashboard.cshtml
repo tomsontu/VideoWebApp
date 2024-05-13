@@ -5,6 +5,9 @@
 	List<int> values = Model.CreatedCountByMonth.Values.ToList();
 	//List<string> dateLabels = Model.CreatedCountByMonth.Keys.ToList().Select(x => x.Year.ToString() + "/" + x.Month.ToString()).ToList();
 	List<double> avgPlayValues = Model.AveragePlayByMonth.Values.ToList();
+	List<double> avgDiggValues = Model.AverageDiggByMonth.Values.ToList();
+	List<double> avgCollectValues = Model.AverageCollectByMonth.Values.ToList();
+	List<double> avgShareValues = Model.AverageShareByMonth.Values.ToList();
 	IEnumerable<(int DiggCount, int PlayCount)> DiggPlayList = Model.DiggPlayList;
 	var diggCounts = Model.DiggPlayList.Select(item => item.DiggCount).ToArray();
 	var playCounts = Model.DiggPlayList.Select(item => item.PlayCount).ToArray();
@@ -42,16 +45,19 @@
 		<tr>
 			<td colspan="4">
 
-				<canvas id="scatterDiggPlayChart" height="100">
+				<canvas id="scatterDiggPlayChart" height="100"></canvas>
 
 
 			</td>
 		</tr>
 		<tr>
-			<td colspan="4">
-				<canvas id="avgLineChart" height="100"></canvas>
+			<td>
+				<canvas id="avgPlayBarChart" height="90" width="90"></canvas>
+				
+				
 			</td>
-			
+			<td><canvas id="avgDiggBarChart" height="90" width="90"></canvas></td>
+			<td colspan="2"><canvas id="avgCollectShareBarChart"></canvas></td>
 		</tr>
 	</table>
 </div>
@@ -63,13 +69,18 @@
 	const values = @Html.Raw(Json.Serialize(values));
 
 	const avgPlayValues = @Html.Raw(Json.Serialize(avgPlayValues));
+	const avgDiggValues = @Html.Raw(Json.Serialize(avgDiggValues));
+	const avgCollectValues = @Html.Raw(Json.Serialize(avgCollectValues));
+	const avgShareValues = @Html.Raw(Json.Serialize(avgShareValues));
 
 	const barCtx = document.getElementById('barChart');
 	const pieCtx = document.getElementById('pieChart');
 	const scatterDiggPlayCtx = document.getElementById('scatterDiggPlayChart').getContext('2d');
 	const durationCtx = document.getElementById('durationPieChart').getContext('2d');
 	const durationBarCtx = document.getElementById('durationBarChart').getContext('2d');
-	const avgLineCtx = document.getElementById('avgLineChart').getContext('2d');
+	const avgPlayBarCtx = document.getElementById('avgPlayBarChart').getContext('2d');
+	const avgDiggBarCtx = document.getElementById('avgDiggBarChart').getContext('2d');
+	const avgCollectShareBarCtx = document.getElementById('avgCollectShareBarChart').getContext('2d');
 
 	var durationData = @Html.Raw(Json.Serialize(Model.DurationCategoryCount));
 	var durationLabels = Object.keys(durationData);
@@ -113,7 +124,7 @@
 		type: 'scatter',
 		data: {
 			datasets: [{
-						label: 'Scatter Plot',
+						label: 'Relation between PlayCount and DiggCount',
 						data: [
 							@for (var i = 0; i < diggCounts.Length; i++)
 							{
@@ -209,15 +220,15 @@
 		}
 	});
 
-	new Chart(avgLineCtx, {
-		type: 'line',
+	new Chart(avgPlayBarCtx, {
+		type: 'bar',
 		data: {
 			labels: labels,
 			datasets: [{
-				label: 'My Dataset',
+				label: 'Avg Play Count by Month',
 				data: avgPlayValues,
-				borderColor: 'rgba(255, 99, 132, 1)', // Customize line color
-				backgroundColor: 'rgba(255, 99, 132, 0.2)', // Customize fill color
+				borderColor: 'rgba(75, 192, 192, 1)', // Customize line color
+				backgroundColor: 'rgba(75, 192, 192, 0.6)', // Customize fill color
 				borderWidth: 1
 			}]
 		},
@@ -228,6 +239,74 @@
 					title: {
 						display: true,
 						text: 'AvgPlayCount' // Y axis title
+					},
+				},
+				x: {
+					title: {
+						display: true,
+						text: 'Month' // X axis title
+					},
+				}
+			}
+		}
+	});
+
+	new Chart(avgDiggBarCtx, {
+		type: 'bar',
+		data: {
+			labels: labels,
+			datasets: [{
+				label: 'Avg Digg Count by Month',
+				data: avgDiggValues,
+				borderColor: 'rgba(255, 159, 64, 1)', // Customize line color
+				backgroundColor: 'rgba(255, 159, 64, 0.6)', // Customize fill color
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true, // Start y-axis at 0
+					title: {
+						display: true,
+						text: 'AvgDiggCount' // Y axis title
+					},
+				},
+				x: {
+					title: {
+						display: true,
+						text: 'Month' // X axis title
+					},
+				}
+			}
+		}
+	});
+
+	new Chart(avgCollectShareBarCtx, {
+		type: 'bar',
+		data: {
+			labels: labels,
+			datasets: [{
+				label: 'Avg Collect Count by Month',
+				data: avgCollectValues,
+				//borderColor: 'rgba(255, 99, 132, 1)', // Customize line color
+				//backgroundColor: 'rgba(255, 99, 132, 0.2)', // Customize fill color
+				borderWidth: 1
+			}, {
+				label: 'Avg Share Count by Month',
+				data: avgShareValues,
+				//borderColor: 'rgba(255, 99, 132, 1)', // Customize line color
+				//backgroundColor: 'rgba(255, 99, 132, 0.2)', // Customize fill color
+				borderWidth: 1
+			}]
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true, // Start y-axis at 0
+					title: {
+						display: true,
+						text: 'Avg Count' // Y axis title
 					},
 				},
 				x: {
