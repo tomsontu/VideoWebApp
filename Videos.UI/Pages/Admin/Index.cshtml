@@ -4,29 +4,43 @@
 }
 
 <div id="app">
-	<table class="table" style="text-align:center">
-		<th>Id</th>
-		<th>Author Name</th>
-		<th>Description</th>
-		<th>Create Time</th>
-		<th>Like ♥</th>
-		<th>Duration</th>
-		<th>Remark</th>
-		<th colspan="2">Action</th>
+	<div class="d-flex justify-content-center mt-4">
+		<table class="table" style="text-align:center">
+			<th>Id</th>
+			<th>Author Name</th>
+			<th>Description</th>
+			<th>Create Time</th>
+			<th>Like ♥</th>
+			<th>Duration</th>
+			<th>Remark</th>
+			<th colspan="3">Action</th>
 
-		<tr v-for="(video, index) in displayedVideos" :key="index">
-			<td><a v-bind:href="video.videoUrl">{{video.id}}</a></td>
-			<td><a v-bind:href="'https://www.tiktok.com/@@'+video.authorId">{{video.authorName}}</a></td>
-			<td>{{video.description}}</td>
-			<td>{{video.createTime}}</td>
-			<td>{{video.diggCount}}</td>
-			<td>{{video.duration}}s</td>
-			<td>{{video.remark}}</td>
-			<td><a v-bind:href="'/video/videos/'+video.videoId">View</a></td>
-			<td><button class="btn btn-danger" @@click="deleteVideo(video.videoId, index)">Delete</button></td>
-		</tr>
-	</table>
+			<tr v-for="(video, index) in displayedVideos" :key="index">
+				<td><a v-bind:href="video.videoUrl">{{video.id}}</a></td>
+				<td><a v-bind:href="'https://www.tiktok.com/@@'+video.authorId">{{video.authorName}}</a></td>
+				<td>{{video.description}}</td>
+				<td>{{video.createTime}}</td>
+				<td>{{video.diggCount}}</td>
+				<td>{{video.duration}}s</td>
+				<td>
+					<div class="col-md-6 mb-3">
+						<input class="form-control" v-model="video.remark" />
 
+					</div>
+				</td>
+				<td><a v-bind:href="'/video/videos/'+video.videoId">View</a></td>
+				<td>
+
+					<button class="btn btn-success" @@click="addRemark(video.videoId, index)">Remark</button>
+
+				</td>
+				<td>
+
+					<button class="btn btn-danger" @@click="deleteVideo(video.videoId, index)">Delete</button>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<!-- Pagination controls -->
 	<div class="d-flex justify-content-center mt-4">
 		<button class="btn btn-primary mr-2" @@click="firstPage" :disabled="currentPage === 1">|←</button>
@@ -43,4 +57,13 @@
 	<script src="~/js/adminVideo.js"></script>
 
 
+}
+
+@section HeadContent{
+	<style type="text/css">
+		.form-control {
+			width: 220px;
+		}
+
+	</style>
 }

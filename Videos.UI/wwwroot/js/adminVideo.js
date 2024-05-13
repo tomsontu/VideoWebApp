@@ -6,6 +6,8 @@ var app = new Vue({
         currentPage: 1, // Current page number
         displayedVideos: [],
         totalPages: 0,
+        editing: false,
+
     },
 
     mounted() {
@@ -45,11 +47,28 @@ var app = new Vue({
         },
 
         deleteVideo(videoId, index) {
+            
             this.loading = true;
             axios.delete('/video/videos/' + videoId).then(res => {
                 console.log(res.data);
                 this.videos.splice(index + (this.currentPage - 1) * this.pageSize, 1);
 
+            })
+                .catch(error => {
+                    console.log(error);
+                })
+                .then(() => {
+                    this.loading = false;
+                });
+        },
+
+        addRemark(videoId, index) {
+            this.editing = true;
+            this.loading = true;
+            axios.put('/video/videos/', { remark: this.videos[index + (this.currentPage - 1) * this.pageSize].remark, videoId: videoId }).then(res => {
+                console.log(res.data);
+                //this.videos.splice(index + (this.currentPage - 1) * this.pageSize, 1, res.data);
+                alert("Done!");
             })
                 .catch(error => {
                     console.log(error);

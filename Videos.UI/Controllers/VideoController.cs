@@ -23,6 +23,12 @@ namespace Videos.UI.Controllers
 			return Ok(new GetVideos(_context).Do());
 		}
 
+		[HttpPut("videos")]
+		public async Task<IActionResult> AddRemark([FromBody] AddRemark.Request request)
+		{
+			return Ok(await new AddRemark(_context).Do(request));
+		}
+
 		[HttpDelete("videos/{videoId}")]
 		public async Task<IActionResult> DeleteVideoAsync(string videoId)
 		{
