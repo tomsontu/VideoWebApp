@@ -304,12 +304,16 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.E
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\MySqlConnector.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Stripe.net.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.Text.Json.dll
@@ -360,6 +364,7 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.T
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.TagHelpers.output.cache
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.RazorCoreGenerate.cache
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Accounts\Login.cshtml.g.cs
+D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_AdminLayout.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\_ViewStart.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Dashboard.cshtml.g.cs
@@ -384,8 +389,4 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.c
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.pdb
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.genruntimeconfig.cache
-D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\Index.cshtml.g.cs
-D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Pipelines.Sockets.Unofficial.dll
-D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\StackExchange.Redis.dll
-D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\ConfigUsers.cshtml.g.cs

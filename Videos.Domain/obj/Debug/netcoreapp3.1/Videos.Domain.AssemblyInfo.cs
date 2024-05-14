@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Videos.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dbd364da4d2cf58d039bf9b38caf46c518f933bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19889384bb1ea13862269c72420691d90a0d2655")]
 [assembly: System.Reflection.AssemblyProductAttribute("Videos.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Videos.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

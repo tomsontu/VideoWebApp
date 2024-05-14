@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Videos.Application.Video;
 using Videos.Database;
@@ -23,12 +24,14 @@ namespace Videos.UI.Controllers
 			return Ok(new GetVideos(_context).Do());
 		}
 
+		[Authorize(Policy = "Manager")]
 		[HttpPut("videos")]
 		public async Task<IActionResult> AddRemark([FromBody] AddRemark.Request request)
 		{
 			return Ok(await new AddRemark(_context).Do(request));
 		}
 
+		[Authorize(Policy = "Manager")]
 		[HttpDelete("videos/{videoId}")]
 		public async Task<IActionResult> DeleteVideoAsync(string videoId)
 		{

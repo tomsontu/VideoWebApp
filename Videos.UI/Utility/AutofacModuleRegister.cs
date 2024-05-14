@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Videos.Application.Users;
 using Videos.Database;
 
 namespace Videos.UI.Utility
@@ -12,6 +13,7 @@ namespace Videos.UI.Utility
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<RedisDb>().AsSelf().InstancePerLifetimeScope();
+            builder.RegisterType<CreateUser>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }
