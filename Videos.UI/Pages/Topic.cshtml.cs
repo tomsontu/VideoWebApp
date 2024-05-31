@@ -37,7 +37,7 @@ namespace Videos.UI.Pages
                 foreach (var item in result)
                 {
                     var score = (double)item[0];
-                    if (score >= 3)
+                    if (score >= 4)
                     {
 						scoreList.Add(score);
 						keywordList.Add((string)item[1]);
