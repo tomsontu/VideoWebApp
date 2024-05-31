@@ -390,3 +390,4 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.d
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.pdb
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.genruntimeconfig.cache
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\ConfigUsers.cshtml.g.cs
+D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Topic.cshtml.g.cs

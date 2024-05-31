@@ -1,0 +1,86 @@
+﻿@page
+@model Videos.UI.Pages.TopicModel
+@{
+	SortedDictionary<string, object[]> topicByMonthDict = Model.TopicByMonthDict;
+	string[] colors = new string[]
+    {
+        "rgba(255, 99, 132, 0.2)", // Red
+        "rgba(54, 162, 235, 0.2)", // Blue
+        "rgba(255, 206, 86, 0.2)", // Yellow
+        "rgba(75, 192, 192, 0.2)", // Green
+        "rgba(153, 102, 255, 0.2)", // Purple
+        "rgba(255, 159, 64, 0.2)"  // Orange
+    };
+    string[] borderColors = new string[]
+    {
+        "rgba(255, 99, 132, 1)", // Red
+        "rgba(54, 162, 235, 1)", // Blue
+        "rgba(255, 206, 86, 1)", // Yellow
+        "rgba(75, 192, 192, 1)", // Green
+        "rgba(153, 102, 255, 1)", // Purple
+        "rgba(255, 159, 64, 1)"  // Orange
+    };
+}
+
+<div class="d-flex justify-content-center mt-4">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<table>
+	@for (var i = 0; i < topicByMonthDict.Count; i++)
+	{
+		var entry = topicByMonthDict.ElementAt(i);
+		var month = entry.Key;
+		var scores = (List<double>)entry.Value[0];
+		var topics = (List<string>)entry.Value[1];
+		var canvasId = "chart-" + month.Replace("/", "-"); // Unique ID for each canvas
+ 		var backgroundColor = colors[i % colors.Length];
+        var borderColor = borderColors[i % borderColors.Length];
+		<tr>
+			<td width="400">
+					<h5>@month</h5>
+					<canvas id="@canvasId" width="1600" height="700"></canvas>
+			</td>
+		</tr>
+		
+		<script>
+			var ctx = document.getElementById('@canvasId').getContext('2d');
+			new Chart(ctx, {
+				type: 'bar',
+				data: {
+					labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(topics)),
+					datasets: [{
+						label: 'Score',
+						data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(scores)),
+						backgroundColor: '@backgroundColor',
+						borderColor: '@borderColor',
+						borderWidth: 1
+					}]
+				},
+				options: {
+					scales: {
+						y: {
+							beginAtZero: true,
+							title: {
+								display: true,
+								text: 'Score'
+							}
+						},
+						x: {
+							title: {
+								display: true,
+								text: 'Topic'
+							}
+						}
+					},
+					plugins: {
+						@* title: {
+							display: true,
+							text: '@month'
+						} *@
+					}
+				}
+			});
+		</script>
+	}
+	</table>
+</div>
+
