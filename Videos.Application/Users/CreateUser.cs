@@ -30,7 +30,7 @@ namespace Videos.Application.Users
 			};
 
 			await _userManager.CreateAsync(managerUser, request.Password);
-
+			
 			var managerClaim = new Claim("Role", "Manager");
 
 			await _userManager.AddClaimAsync(managerUser, managerClaim);

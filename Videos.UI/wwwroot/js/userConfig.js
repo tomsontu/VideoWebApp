@@ -1,6 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
+        editing: false,
         username: "",
         password: "",
     },
@@ -21,6 +22,12 @@ var app = new Vue({
                 .then(() => {
                     this.loading = false;
                 });
+        },
+        newUser() {
+            this.editing = true;
+        },
+        cancel() {
+            this.editing = false;
         },
     }
 })

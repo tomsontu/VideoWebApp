@@ -4,18 +4,52 @@
 }
 
 <div id="app" class="container mt-5">
-    <h3>Add User</h3>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input id="username" v-model="username" type="text" class="form-control" placeholder="Enter username">
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input id="password" v-model="password" type="password" class="form-control" placeholder="Enter password">
-    </div>
-    <button class="btn btn-primary" @@click="createUser()">Create</button>
+	<div v-if="!editing">
+		<button class="btn btn-success mb-3" @@click="newUser">Add User</button>
+		<table class="table" style="text-align:center">
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Claim Type</th>
+					<th>Claim Value</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var userClaim in Model.UsersWithClaims)
+				{
+					<tr>
+						<td>@userClaim.Username</td>
+						<td>@userClaim.ClaimType</td>
+						<td>@userClaim.ClaimValue</td>
+						<td>
+							<form method="post" asp-page-handler="Delete">
+								<input type="hidden" name="userId" value="@userClaim.UserId" />
+								<button type="submit" class="btn btn-danger">Delete</button>
+							</form>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+
+	<div v-else>
+		<h3>Add User</h3>
+		<div class="form-group">
+			<label for="username">Username</label>
+			<input id="username" v-model="username" type="text" class="form-control" placeholder="Enter username">
+		</div>
+		<div class="form-group">
+			<label for="password">Password</label>
+			<input id="password" v-model="password" type="password" class="form-control" placeholder="Enter password">
+		</div>
+		<button class="btn btn-primary" @@click="createUser()">Create</button>
+		<button class="btn btn-secondary" @@click="cancel">Cancel</button>
+	</div>
 </div>
 
 @section scripts {
+	
 	<script src="~/js/userConfig.js"></script>
 }
