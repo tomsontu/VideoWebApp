@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
+using Videos.Domain;
 
 namespace Videos.Database
 {
@@ -12,6 +13,7 @@ namespace Videos.Database
         }
 
         public DbSet<Video> Videos { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 

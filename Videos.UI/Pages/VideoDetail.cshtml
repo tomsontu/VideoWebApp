@@ -20,6 +20,14 @@
 				Size: @Model.Size<br />
 				Video Quality: @Model.VideoQuality<br /><hr />
 				
+				@{
+					foreach (var review in Model.Reviews)
+					{
+						<p>@review</p>
+						<hr />
+					}
+				}
+
 				<div class="container mt-5">
 					<div class="form-group">
 						<label>Your Comment</label>

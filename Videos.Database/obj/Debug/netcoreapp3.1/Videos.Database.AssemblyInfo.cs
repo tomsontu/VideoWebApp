@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Videos.Database")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19889384bb1ea13862269c72420691d90a0d2655")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7204d6fb16f8df6b5b544415b10d75d139a91421")]
 [assembly: System.Reflection.AssemblyProductAttribute("Videos.Database")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Videos.Database")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

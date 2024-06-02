@@ -3,6 +3,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using Videos.Database;
 
@@ -24,16 +25,17 @@ namespace Videos.Application.Video
 			public string CreateTime { get; set; }
 			public string Duration { get; set; }
 			public string VideoUrl { get; set; }
-            public string Ratio { get; set; }
-            public string Format { get; set; }
-            public string Height { get; set; }
-            public string Size { get; set; }
-            public string VideoQuality { get; set; }
-        }
+			public string Ratio { get; set; }
+			public string Format { get; set; }
+			public string Height { get; set; }
+			public string Size { get; set; }
+			public string VideoQuality { get; set; }
+			public List<string> Reviews { get; set; }
+		}
 
 		public VideoViewModel Do(string videoId)
 		{
-			return _context.Videos.AsEnumerable().Where(x=>x.VideoId==videoId).Select(x =>
+			var video= _context.Videos.AsEnumerable().Where(x => x.VideoId == videoId).Select(x =>
 			{
 				JToken jToken = JsonConvert.DeserializeObject<JToken>(x.JsonString);
 
@@ -42,9 +44,9 @@ namespace Videos.Application.Video
 				DateTime createTime = DateTimeOffset.FromUnixTimeSeconds(jToken.SelectToken("$.createTime").Value<long>()).UtcDateTime;
 				string duration = jToken.SelectToken("$.video.duration").Value<int>().ToString();
 				string videoUrl = jToken.SelectToken("$.video_url").Value<string>();
-				string ratio= jToken.SelectToken("$.video.ratio").Value<string>();
-				string format= jToken.SelectToken("$.video.format").Value<string>();
-				string height= jToken.SelectToken("$.video.height").Value<string>();
+				string ratio = jToken.SelectToken("$.video.ratio").Value<string>();
+				string format = jToken.SelectToken("$.video.format").Value<string>();
+				string height = jToken.SelectToken("$.video.height").Value<string>();
 				string size = (jToken.SelectToken("$.video.size").Value<int>() / 1024.0 / 1024.0).ToString("N2") + "MB";
 				string videoQuality = jToken.SelectToken("$.video.videoQuality").Value<string>();
 
@@ -61,8 +63,16 @@ namespace Videos.Application.Video
 					Height = height,
 					Size = size,
 					VideoQuality = videoQuality,
+					Reviews = new List<string>(),
 				};
 			}).FirstOrDefault();
+
+			if (video != null)
+			{
+				video.Reviews = _context.Reviews.Where(y => y.VideoId == videoId).Select(y => y.VideoReview).ToList();
+			}
+
+			return video;
 		}
 	}
 }
