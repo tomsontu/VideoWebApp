@@ -20,19 +20,24 @@
 				Size: @Model.Size<br />
 				Video Quality: @Model.VideoQuality<br /><hr />
 				
-				@{
-					foreach (var review in Model.Reviews)
-					{
-						<p>@review</p>
-						<hr />
+
+				<h3>Reviews</h3>
+				<div id="reviewsContainer">
+					@{
+						foreach (var review in Model.Reviews)
+						{
+							<p>@review</p>
+							<hr />
+						}
 					}
-				}
+				</div>
 
 				<div class="container mt-5">
 					<div class="form-group">
 						<label>Your Comment</label>
 						<textarea class="form-control" id="exampleFormControlTextarea1" rows="4" cols="50"></textarea>
 					</div>
+					<button type="button" class="btn btn-primary" id="submitComment">Submit</button>
 				</div>
 			</td>
 		</tr>
@@ -59,4 +64,37 @@
 			padding: 10px; /* Optional: Add padding to cells */
 		}
 	</style>
+}
+
+@section scripts {
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$('#submitComment').click(function () {
+				var comment = $('#exampleFormControlTextarea1').val();
+				$.ajax({
+					type: 'POST',
+					url: '/video/videos/addComment',
+					data: JSON.stringify({ comment: comment, videoId: '@Model.VideoId' }),
+					contentType: 'application/json',
+					success: function (response) {
+						// Assuming 'response' contains the new comment
+						// Append the new comment to the reviews container
+						var newReviewHtml = '<p>' + comment + '</p><hr />';
+						$('#reviewsContainer').append(newReviewHtml);
+
+						// Clear the textarea
+						$('#exampleFormControlTextarea1').val('');
+
+						//alert('Comment submitted successfully!');
+					},
+					error: function (error) {
+						alert('Error submitting comment.');
+					}
+				});
+			});
+		});
+	</script>
+
 }

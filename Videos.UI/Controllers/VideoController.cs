@@ -43,5 +43,11 @@ namespace Videos.UI.Controllers
 		{
 			return View("~/Pages/VideoDetail.cshtml", new GetVideo(_context).Do(videoId));
 		}
+
+		[HttpPost("videos/addComment")]
+		public async Task<IActionResult> AddComment([FromBody] AddComment.Request request)
+		{
+			return Ok(await new AddComment(_context).Do(request));
+		}
 	}
 }
