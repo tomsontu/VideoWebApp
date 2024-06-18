@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,10 +11,12 @@ namespace Videos.Application.Video
 	public class AddComment
 	{
 		private readonly ApplicationDbContext _context;
+		private readonly ILogger<AddComment> _logger;
 
-        public AddComment(ApplicationDbContext context)
+		public AddComment(ApplicationDbContext context, ILogger<AddComment> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public async Task<object> Do(Request request)
@@ -25,6 +28,7 @@ namespace Videos.Application.Video
             };
             _context.Reviews.Add(review);
             var result = await _context.SaveChangesAsync() > 0;
+            _logger.LogInformation($"A user has posted a comment '{request.Comment}' on the video {request.VideoId}");
             return new
             {
                 Result = result,

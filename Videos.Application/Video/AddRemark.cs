@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +11,12 @@ namespace Videos.Application.Video
 	public class AddRemark
 	{
 		private readonly ApplicationDbContext _context;
-		public AddRemark(ApplicationDbContext context)
+		private readonly ILogger<AddComment> _logger;
+
+		public AddRemark(ApplicationDbContext context, ILogger<AddComment> logger)
 		{
 			_context = context;
+			_logger = logger;
 		}
 
 		public class Request
@@ -31,6 +35,7 @@ namespace Videos.Application.Video
 			var video = _context.Videos.FirstOrDefault(x => x.VideoId == request.VideoId);
 			video.Remark = request.Remark;
 			var result = await _context.SaveChangesAsync() > 0;
+			_logger.LogInformation($"A manager/admin has added a remark '{request.Remark}' on the video {request.VideoId}");
 			return new Response
 			{
 				Result = result,

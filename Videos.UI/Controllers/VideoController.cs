@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Videos.Application.Video;
 using Videos.Database;
@@ -11,11 +12,13 @@ namespace Videos.UI.Controllers
 	{
 		private readonly ApplicationDbContext _context;
         private readonly RedisDb _redisDb;
+		private readonly ILogger<AccountController> _logger;
 
-        public VideoController(ApplicationDbContext context, RedisDb redisDb)
+		public VideoController(ApplicationDbContext context, RedisDb redisDb, ILogger<AccountController> logger)
 		{
 			_context = context;
 			_redisDb = redisDb;
+			_logger = logger;
 		}
 
 		[HttpGet("videos")]
@@ -41,6 +44,7 @@ namespace Videos.UI.Controllers
 		[HttpGet("videos/{videoId}")]
 		public IActionResult GetVideo(string videoId)
 		{
+			_logger.LogInformation($"video {videoId} has been viewed by a user");
 			return View("~/Pages/VideoDetail.cshtml", new GetVideo(_context).Do(videoId));
 		}
 
