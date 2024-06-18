@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kH830bRf9RtNHBrlmEgw+1krLbikKxNS8Sp1FnZj+h9fTYPbTSdqnaPQ9YcmQCAjjPKyEx10SGSedV8mdGdvGA==",
+  "dgSpecHash": "QS/bE52ZsdDP7/6iJ944NxiXpC+CW1fkH13+W9mScRJK67kHDlfe68cJ0nAEx17a5YGCGDXKpZAaTw5DwImW6w==",
   "success": true,
   "projectFilePath": "D:\\Users\\15380\\Source\\Repos\\Videos\\Videos.UI\\Videos.UI.csproj",
   "expectedPackageFiles": [
@@ -53,6 +53,9 @@
     "C:\\Users\\15380\\.nuget\\packages\\mysqlconnector\\0.61.0\\mysqlconnector.0.61.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\15380\\.nuget\\packages\\nlog\\4.7.15\\nlog.4.7.15.nupkg.sha512",
+    "C:\\Users\\15380\\.nuget\\packages\\nlog.extensions.logging\\1.7.5\\nlog.extensions.logging.1.7.5.nupkg.sha512",
+    "C:\\Users\\15380\\.nuget\\packages\\nlog.web.aspnetcore\\4.15.0\\nlog.web.aspnetcore.4.15.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\3.1.0\\pomelo.entityframeworkcore.mysql.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\pomelo.jsonobject\\2.2.1\\pomelo.jsonobject.2.2.1.nupkg.sha512",

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using StackExchange.Redis;
 using System;
@@ -15,16 +16,19 @@ namespace Videos.UI.Pages
 
 
         private readonly RedisDb _redisDb;
+		private readonly ILogger<TopicModel> _logger;
 
-        public TopicModel(RedisDb redisDb)
+		public TopicModel(RedisDb redisDb, ILogger<TopicModel> logger)
         {
             _redisDb = redisDb;
+            _logger = logger;
         }
 
         public void OnGet()
         {
             SetHashEntry();
-        }
+			_logger.LogInformation("A user has viewed the topic page");
+		}
 
         public void SetHashEntry()
         {

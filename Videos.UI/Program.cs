@@ -5,6 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using NLog;
+using NLog.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,10 +20,14 @@ namespace Videos.UI
     {
         public static void Main(string[] args)
         {
-            var host = CreateHostBuilder(args).Build();
+			var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+			var host = CreateHostBuilder(args).Build();
+
             try
             {
-                using (var scope = host.Services.CreateScope())
+				logger.Debug("init main");
+
+				using (var scope = host.Services.CreateScope())
                 {
                     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
                     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
@@ -52,11 +58,16 @@ namespace Videos.UI
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message.ToString());
+				//NLog: catch setup errors
+				logger.Error(e, "Stopped program because of exception");
+				Console.WriteLine(e.Message.ToString());
             }
-
-            host.Run();
-        }
+            finally
+            {
+				host.Run();
+				NLog.LogManager.Shutdown();
+			}
+		}
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
@@ -64,6 +75,12 @@ namespace Videos.UI
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
-    }
+                })
+			    .ConfigureLogging(logging =>
+			    {
+				    logging.ClearProviders();
+				    logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+			    })
+		        .UseNLog();  // NLog: Setup NLog for Dependency injection
+	}
 }

@@ -391,3 +391,7 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.p
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.genruntimeconfig.cache
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\ConfigUsers.cshtml.g.cs
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Razor\Pages\Topic.cshtml.g.cs
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\nlog.config
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\NLog.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\NLog.Extensions.Logging.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\NLog.Web.AspNetCore.dll

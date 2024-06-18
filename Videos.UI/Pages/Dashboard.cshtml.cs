@@ -7,16 +7,20 @@ using System.Collections.Generic;
 using System.Linq;
 using Videos.Database;
 using System.Configuration;
+using Microsoft.Extensions.Logging;
+using Videos.UI.Pages.Accounts;
 
 namespace Videos.UI.Pages
 {
     public class DashboardModel : PageModel
     {
         private readonly ApplicationDbContext _context;
+		private readonly ILogger<DashboardModel> _logger;
 
-        public DashboardModel(ApplicationDbContext context)
+		public DashboardModel(ApplicationDbContext context, ILogger<DashboardModel> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public void OnGet()
@@ -28,7 +32,7 @@ namespace Videos.UI.Pages
             SetAverageCountByMonth("diggCount", AverageDiggByMonth);
             SetAverageCountByMonth("collectCount", AverageCollectByMonth);
             SetAverageCountByMonth("shareCount", AverageShareByMonth);
-
+            _logger.LogInformation("A user has viewed the dashboard page");
 			Console.WriteLine();
         }
 
