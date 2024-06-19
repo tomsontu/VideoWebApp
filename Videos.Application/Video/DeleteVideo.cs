@@ -12,9 +12,9 @@ namespace Videos.Application.Video
 	{
 		private readonly ApplicationDbContext _context;
 		private readonly RedisDb _redisDb;
-		private readonly ILogger<AddComment> _logger;
+		private readonly ILogger _logger;
 
-		public DeleteVideo(ApplicationDbContext context, RedisDb redisDb, ILogger<AddComment> logger)
+		public DeleteVideo(ApplicationDbContext context, RedisDb redisDb, ILogger logger)
 		{
 			_context = context;
 			_redisDb = redisDb;

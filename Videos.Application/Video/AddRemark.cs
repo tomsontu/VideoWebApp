@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace Videos.Application.Video
 	public class AddRemark
 	{
 		private readonly ApplicationDbContext _context;
-		private readonly ILogger<AddComment> _logger;
+		private readonly ILogger _logger;
 
-		public AddRemark(ApplicationDbContext context, ILogger<AddComment> logger)
+		public AddRemark(ApplicationDbContext context, ILogger logger)
 		{
 			_context = context;
 			_logger = logger;

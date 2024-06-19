@@ -12,7 +12,7 @@ namespace Videos.UI.Controllers
 	{
 		private readonly ApplicationDbContext _context;
         private readonly RedisDb _redisDb;
-		private readonly ILogger<AccountController> _logger;
+		private readonly ILogger _logger;
 
 		public VideoController(ApplicationDbContext context, RedisDb redisDb, ILogger<AccountController> logger)
 		{
@@ -31,14 +31,14 @@ namespace Videos.UI.Controllers
 		[HttpPut("videos")]
 		public async Task<IActionResult> AddRemark([FromBody] AddRemark.Request request)
 		{
-			return Ok(await new AddRemark(_context).Do(request));
+			return Ok(await new AddRemark(_context, _logger).Do(request));
 		}
 
 		[Authorize(Policy = "Manager")]
 		[HttpDelete("videos/{videoId}")]
 		public async Task<IActionResult> DeleteVideoAsync(string videoId)
 		{
-			return Ok(await new DeleteVideo(_context, _redisDb).Do(videoId));
+			return Ok(await new DeleteVideo(_context, _redisDb, _logger).Do(videoId));
 		}
 
 		[HttpGet("videos/{videoId}")]
@@ -51,7 +51,7 @@ namespace Videos.UI.Controllers
 		[HttpPost("videos/addComment")]
 		public async Task<IActionResult> AddComment([FromBody] AddComment.Request request)
 		{
-			return Ok(await new AddComment(_context).Do(request));
+			return Ok(await new AddComment(_context, _logger).Do(request));
 		}
 	}
 }

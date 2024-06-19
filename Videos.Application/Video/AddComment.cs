@@ -11,9 +11,9 @@ namespace Videos.Application.Video
 	public class AddComment
 	{
 		private readonly ApplicationDbContext _context;
-		private readonly ILogger<AddComment> _logger;
+		private readonly ILogger _logger;
 
-		public AddComment(ApplicationDbContext context, ILogger<AddComment> logger)
+		public AddComment(ApplicationDbContext context, ILogger logger)
         {
             _context = context;
             _logger = logger;
