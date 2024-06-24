@@ -2,12 +2,14 @@ var app = new Vue({
     el: "#app",
     data: {
         videos: [],
+        videosCopy: [],
         pageSize: 7, // Number of videos per page
         currentPage: 1, // Current page number
         displayedVideos: [],
         totalPages: 0,
         editing: false,
-
+        searchQuery: '',
+        searchResults: [],
     },
 
     mounted() {
@@ -31,12 +33,52 @@ var app = new Vue({
     },
 
     methods: {
+        async search() {
+            this.currentPage = 1;
+            this.videos = this.videosCopy;
+            try {
+                const response = await axios.post('http://localhost:9200/videos/_search', {
+                    query: {
+                        match: {
+                            description: this.searchQuery
+                        }
+                    }
+                });
+
+                this.searchResults = response.data.hits.hits;
+
+                const videoIdSet = new Set();
+
+                this.searchResults.forEach(hit => {
+                    if (hit._source && hit._source.videoId) {
+                        videoIdSet.add(hit._source.videoId);
+                    }
+                });
+
+                console.log(videoIdSet);
+
+                const filteredVideos = this.videos.filter(video => videoIdSet.has(video.videoId));
+                this.videos = filteredVideos;
+
+                console.log(filteredVideos);
+
+            } catch (error) {
+                console.error('Error searching:', error);
+            }
+
+        },
+
+        async reset() {
+            this.currentPage = 1;
+            this.videos = this.videosCopy;
+        },
+
         getVideos() {
             this.loading = true;
             axios.get('/video/videos').then(res => {
                 console.log(res.data);
                 this.videos = res.data;
-
+                this.videosCopy = res.data;
             })
                 .catch(error => {
                     console.log(error);

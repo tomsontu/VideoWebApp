@@ -4,7 +4,7 @@
 	<div id="app">
 
 		<div class="form-group form-inline">
-			<input type="text" class="form-control" style="width:360px" placeholder="Search keywords/descriptions...">
+			<input type="text" class="form-control" v-model="searchQuery" style="width:360px" placeholder="Search keywords/descriptions...">
 			&nbsp;&nbsp;
 			<button class="btn btn-success" @@click="search">Search</button>
 			&nbsp;&nbsp;
