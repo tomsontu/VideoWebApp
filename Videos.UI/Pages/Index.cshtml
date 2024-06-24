@@ -2,6 +2,15 @@
 @model IndexModel
 <div class="d-flex justify-content-center mt-4">
 	<div id="app">
+
+		<div class="form-group form-inline">
+			<input type="text" class="form-control" style="width:360px" placeholder="Search keywords/descriptions...">
+			&nbsp;&nbsp;
+			<button class="btn btn-success" @@click="search">Search</button>
+			&nbsp;&nbsp;
+			<button class="btn btn-warning" @@click="reset">Reset</button>
+		</div>
+
 		<table class="table" style="text-align:center">
 			<th>Id</th>
 			<th>Author Name</th>

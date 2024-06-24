@@ -26,6 +26,14 @@ var app = new Vue({
 
 
     methods: {
+        async search() {
+
+        },
+
+        async reset() {
+            location.reload();
+        },
+
         getVideos() {
             this.loading = true;
             axios.get('/video/videos').then(res => {
