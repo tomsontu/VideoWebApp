@@ -54,13 +54,13 @@ var app = new Vue({
                         videoIdSet.add(hit._source.videoId);
                     }
                 });
-
+                console.log(this.videos);
                 console.log(videoIdSet);
 
-                const filteredVideos = this.videos.filter(video => videoIdSet.has(video.videoId));
-                this.videos = filteredVideos;
+                this.videos = this.videos.filter(video => videoIdSet.has(video.videoId));
+                
 
-                console.log(filteredVideos);
+                console.log(this.videos);
 
             } catch (error) {
                 console.error('Error searching:', error);
@@ -93,8 +93,10 @@ var app = new Vue({
             this.loading = true;
             axios.delete('/video/videos/' + videoId).then(res => {
                 console.log(res.data);
-                this.videos.splice(index + (this.currentPage - 1) * this.pageSize, 1);
-
+                //this.videos.splice(index + (this.currentPage - 1) * this.pageSize, 1);
+                //this.videosCopy.splice(index + (this.currentPage - 1) * this.pageSize, 1);
+                this.videos = this.videos.filter(video => video.videoId !== videoId);
+                this.videosCopy = this.videosCopy.filter(video => video.videoId !== videoId);
             })
                 .catch(error => {
                     console.log(error);
