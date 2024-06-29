@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "UaogpfaPbSYeNYhB6TR738LfTCwMcSeHzg8FO6Ju+i9SPuH98AmGMcemrvxK06iVfhrJd0yOMaxF9m3u1mvcPQ==",
+  "dgSpecHash": "vVfVJeKteoRobExCzfZH+QGanP9wk94//JRDTN+scxNy0QV4lGWLUbJNTiiq6cTc/6ACgn2k3lsI6sSOIeStWw==",
   "success": true,
   "projectFilePath": "D:\\Users\\15380\\Source\\Repos\\Videos\\Videos.Application\\Videos.Application.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\15380\\.nuget\\packages\\elasticsearch.net\\7.6.0\\elasticsearch.net.7.6.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.0\\microsoft.aspnetcore.cryptography.internal.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.0\\microsoft.aspnetcore.cryptography.keyderivation.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.1.0\\microsoft.aspnetcore.http.abstractions.2.1.0.nupkg.sha512",
@@ -12,7 +13,7 @@
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\3.1.0\\microsoft.aspnetcore.identity.entityframeworkcore.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.0\\microsoft.bcl.asyncinterfaces.1.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
-    "C:\\Users\\15380\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\15380\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.entityframeworkcore\\3.1.0\\microsoft.entityframeworkcore.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\3.1.0\\microsoft.entityframeworkcore.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\3.1.0\\microsoft.entityframeworkcore.analyzers.3.1.0.nupkg.sha512",
@@ -35,6 +36,7 @@
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\mysqlconnector\\0.61.0\\mysqlconnector.0.61.0.nupkg.sha512",
+    "C:\\Users\\15380\\.nuget\\packages\\nest\\7.6.0\\nest.7.6.0.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\pipelines.sockets.unofficial\\2.2.8\\pipelines.sockets.unofficial.2.2.8.nupkg.sha512",
     "C:\\Users\\15380\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\3.1.0\\pomelo.entityframeworkcore.mysql.3.1.0.nupkg.sha512",

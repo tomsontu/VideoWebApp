@@ -14,7 +14,7 @@ namespace Videos.UI.Utility
 
             builder.RegisterType<RedisDb>().AsSelf().InstancePerLifetimeScope();
             builder.RegisterType<CreateUser>().AsSelf().InstancePerLifetimeScope();
-            
-        }
+			builder.RegisterType<ElasticSearchDb>().AsSelf().InstancePerLifetimeScope();
+		}
     }
 }

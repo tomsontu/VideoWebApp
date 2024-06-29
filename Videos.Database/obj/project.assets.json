@@ -2,6 +2,24 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.1": {
+      "Elasticsearch.Net/7.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.CSharp": "4.6.0",
+          "System.Buffers": "4.5.0",
+          "System.Diagnostics.DiagnosticSource": "4.5.1"
+        },
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {
         "type": "package",
         "compile": {
@@ -422,6 +440,22 @@
           }
         }
       },
+      "NEST/7.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.6.0"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Newtonsoft.Json/12.0.3": {
         "type": "package",
         "compile": {
@@ -744,6 +778,28 @@
     }
   },
   "libraries": {
+    "Elasticsearch.Net/7.6.0": {
+      "sha512": "5YAjvtkAuTvZhH5bOT/5Hced9tPS9j6MAiD5pjCI5CFlAK0WdA3YzTwcTLa5Yz1CiV4RM7XVwVIOzwDyEugSEw==",
+      "type": "package",
+      "path": "elasticsearch.net/7.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "elasticsearch.net.7.6.0.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.pdb",
+        "lib/net461/Elasticsearch.Net.xml",
+        "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.pdb",
+        "lib/netstandard2.0/Elasticsearch.Net.xml",
+        "lib/netstandard2.1/Elasticsearch.Net.dll",
+        "lib/netstandard2.1/Elasticsearch.Net.pdb",
+        "lib/netstandard2.1/Elasticsearch.Net.xml",
+        "license.txt",
+        "nuget-icon.png"
+      ]
+    },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {
       "sha512": "bsnhHHiWb0s8fcLDOfTXAb0VoTT1cCRjvxo6kwi7RItOQxv/PjMx5s6BEhnAcm/+ZkrN4+2TFXhCZDuiPBfB0Q==",
       "type": "package",
@@ -1300,6 +1356,25 @@
         "logo.png",
         "mysqlconnector.0.61.0.nupkg.sha512",
         "mysqlconnector.nuspec"
+      ]
+    },
+    "NEST/7.6.0": {
+      "sha512": "3G19IlX0jjhg7idzS8VElxOpw0HFxi6a34oTr16qwkgG8d9mRoAdL3cvJSadsU8JgJdAd2k66kSOrkPseLhZeQ==",
+      "type": "package",
+      "path": "nest/7.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.pdb",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.pdb",
+        "lib/netstandard2.0/Nest.xml",
+        "license.txt",
+        "nest.7.6.0.nupkg.sha512",
+        "nest.nuspec",
+        "nuget-icon.png"
       ]
     },
     "Newtonsoft.Json/12.0.3": {
@@ -1909,6 +1984,7 @@
       "Microsoft.AspNetCore.Identity.EntityFrameworkCore >= 3.1.0",
       "Microsoft.EntityFrameworkCore >= 3.1.0",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.0",
+      "NEST >= 7.6.0",
       "Pomelo.EntityFrameworkCore.MySql >= 3.1.0",
       "StackExchange.Redis >= 2.7.33",
       "Videos.Domain >= 1.0.0"
@@ -1975,6 +2051,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[3.1.0, )"
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.6.0, )"
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
