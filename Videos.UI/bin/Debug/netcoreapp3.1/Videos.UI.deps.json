@@ -395,20 +395,21 @@
           "lib/netstandard1.5/Castle.Core.dll": {}
         }
       },
-      "Elasticsearch.Net/7.6.0": {
+      "Elasticsearch.Net/7.2.0": {
         "dependencies": {
-          "Microsoft.CSharp": "4.7.0",
           "System.Buffers": "4.5.1",
-          "System.Diagnostics.DiagnosticSource": "4.7.0"
+          "System.Diagnostics.DiagnosticSource": "4.7.0",
+          "System.Reflection.Emit": "4.3.0",
+          "System.Reflection.Emit.Lightweight": "4.3.0"
         },
         "runtime": {
-          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {
             "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.6.0.0"
+            "fileVersion": "7.2.0.0"
           }
         },
         "compile": {
-          "lib/netstandard2.1/Elasticsearch.Net.dll": {}
+          "lib/netstandard2.0/Elasticsearch.Net.dll": {}
         }
       },
       "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {},
@@ -843,14 +844,14 @@
           "lib/netcoreapp3.0/MySqlConnector.dll": {}
         }
       },
-      "NEST/7.6.0": {
+      "NEST/7.2.0": {
         "dependencies": {
-          "Elasticsearch.Net": "7.6.0"
+          "Elasticsearch.Net": "7.2.0"
         },
         "runtime": {
           "lib/netstandard2.0/Nest.dll": {
             "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.6.0.0"
+            "fileVersion": "7.2.0.0"
           }
         },
         "compile": {
@@ -1830,7 +1831,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "3.1.0",
           "Microsoft.EntityFrameworkCore": "3.1.0",
-          "NEST": "7.6.0",
+          "NEST": "7.2.0",
           "Pomelo.EntityFrameworkCore.MySql": "3.1.0",
           "StackExchange.Redis": "2.7.33",
           "Videos.Domain": "1.0.0"
@@ -3557,12 +3558,12 @@
       "path": "castle.core/4.3.1",
       "hashPath": "castle.core.4.3.1.nupkg.sha512"
     },
-    "Elasticsearch.Net/7.6.0": {
+    "Elasticsearch.Net/7.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5YAjvtkAuTvZhH5bOT/5Hced9tPS9j6MAiD5pjCI5CFlAK0WdA3YzTwcTLa5Yz1CiV4RM7XVwVIOzwDyEugSEw==",
-      "path": "elasticsearch.net/7.6.0",
-      "hashPath": "elasticsearch.net.7.6.0.nupkg.sha512"
+      "sha512": "sha512-cqYczqUE5uDahyxwUWDS6Igv02h1Jx36A+WX6oStBYjS2d0BAazMlI3qJoUA7wqJ0BBruwuXbAtoY44Updxgew==",
+      "path": "elasticsearch.net/7.2.0",
+      "hashPath": "elasticsearch.net.7.2.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/3.1.0": {
       "type": "package",
@@ -3865,12 +3866,12 @@
       "path": "mysqlconnector/0.61.0",
       "hashPath": "mysqlconnector.0.61.0.nupkg.sha512"
     },
-    "NEST/7.6.0": {
+    "NEST/7.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3G19IlX0jjhg7idzS8VElxOpw0HFxi6a34oTr16qwkgG8d9mRoAdL3cvJSadsU8JgJdAd2k66kSOrkPseLhZeQ==",
-      "path": "nest/7.6.0",
-      "hashPath": "nest.7.6.0.nupkg.sha512"
+      "sha512": "sha512-G80rtK8NAUPCSXhIdKeUkVVJEp2UBxE/+NtiQJrVOq6hKbFXy7sx6x9EkZaJURVvmko5XFaJoJOaevzAsW9gXQ==",
+      "path": "nest/7.2.0",
+      "hashPath": "nest.7.2.0.nupkg.sha512"
     },
     "NETStandard.Library/1.6.1": {
       "type": "package",
