@@ -13,12 +13,14 @@ namespace Videos.UI.Controllers
 		private readonly ApplicationDbContext _context;
         private readonly RedisDb _redisDb;
 		private readonly ILogger _logger;
+		private readonly ElasticSearchDb _elasticsearchDb;
 
-		public VideoController(ApplicationDbContext context, RedisDb redisDb, ILogger<AccountController> logger)
+		public VideoController(ApplicationDbContext context, RedisDb redisDb, ILogger<AccountController> logger, ElasticSearchDb elasticSearchDb)
 		{
 			_context = context;
 			_redisDb = redisDb;
 			_logger = logger;
+			_elasticsearchDb = elasticSearchDb;
 		}
 
 		[HttpGet("videos")]
@@ -51,7 +53,7 @@ namespace Videos.UI.Controllers
 		[HttpPost("videos/addComment")]
 		public async Task<IActionResult> AddComment([FromBody] AddComment.Request request)
 		{
-			return Ok(await new AddComment(_context, _logger).Do(request));
+			return Ok(await new AddComment(_context, _logger, _elasticsearchDb).Do(request));
 		}
 	}
 }

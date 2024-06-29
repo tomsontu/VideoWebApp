@@ -395,3 +395,5 @@ D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.c
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.dll
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.pdb
 D:\Users\15380\Source\Repos\Videos\Videos.UI\obj\Debug\netcoreapp3.1\Videos.UI.genruntimeconfig.cache
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Elasticsearch.Net.dll
+D:\Users\15380\Source\Repos\Videos\Videos.UI\bin\Debug\netcoreapp3.1\Nest.dll
