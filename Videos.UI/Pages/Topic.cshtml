@@ -3,84 +3,181 @@
 @{
 	SortedDictionary<string, object[]> topicByMonthDict = Model.TopicByMonthDict;
 	string[] colors = new string[]
-    {
-        "rgba(255, 99, 132, 0.2)", // Red
+	{
+		"rgba(255, 99, 132, 0.2)", // Red
         "rgba(54, 162, 235, 0.2)", // Blue
         "rgba(255, 206, 86, 0.2)", // Yellow
         "rgba(75, 192, 192, 0.2)", // Green
         "rgba(153, 102, 255, 0.2)", // Purple
         "rgba(255, 159, 64, 0.2)"  // Orange
-    };
-    string[] borderColors = new string[]
-    {
-        "rgba(255, 99, 132, 1)", // Red
+	};
+	string[] borderColors = new string[]
+	{
+		"rgba(255, 99, 132, 1)", // Red
         "rgba(54, 162, 235, 1)", // Blue
         "rgba(255, 206, 86, 1)", // Yellow
         "rgba(75, 192, 192, 1)", // Green
         "rgba(153, 102, 255, 1)", // Purple
         "rgba(255, 159, 64, 1)"  // Orange
-    };
+	};
 }
+
+<button onclick="toggleDisplay()" class="btn btn-primary">Toggle Graph/Table</button>
+<div id="toggle-scroll-container" style="display: none; margin-top:10px">
+	<button onclick="toggleScrollable()" class="btn btn-secondary">Toggle Scroll</button>
+</div>
 
 <div class="d-flex justify-content-center mt-4">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<table>
-	@for (var i = 0; i < topicByMonthDict.Count; i++)
-	{
-		var entry = topicByMonthDict.ElementAt(i);
-		var month = entry.Key;
-		var scores = (List<double>)entry.Value[0];
-		var topics = (List<string>)entry.Value[1];
-		var canvasId = "chart-" + month.Replace("/", "-"); // Unique ID for each canvas
- 		var backgroundColor = colors[i % colors.Length];
-        var borderColor = borderColors[i % borderColors.Length];
-		<tr>
-			<td width="400">
-					<h5>@month</h5>
-					<canvas id="@canvasId" width="1600" height="700"></canvas>
-			</td>
-		</tr>
-		
-		<script>
-			var ctx = document.getElementById('@canvasId').getContext('2d');
-			new Chart(ctx, {
-				type: 'bar',
-				data: {
-					labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(topics)),
-					datasets: [{
-						label: 'Score',
-						data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(scores)),
-						backgroundColor: '@backgroundColor',
-						borderColor: '@borderColor',
-						borderWidth: 1
-					}]
-				},
-				options: {
-					scales: {
-						y: {
-							beginAtZero: true,
-							title: {
-								display: true,
-								text: 'Score'
-							}
+	<div id="graphs" style="display: block;">
+		<table>
+			@for (var i = 0; i < topicByMonthDict.Count; i++)
+			{
+				var entry = topicByMonthDict.ElementAt(i);
+				var month = entry.Key;
+				var scores = (List<double>)entry.Value[0];
+				var topics = (List<string>)entry.Value[1];
+				var canvasId = "chart-" + month.Replace("/", "-"); // Unique ID for each canvas
+				var backgroundColor = colors[i % colors.Length];
+				var borderColor = borderColors[i % borderColors.Length];
+				<tr>
+					<td width="400">
+						<h5>@month</h5>
+						<canvas id="@canvasId" width="1600" height="700"></canvas>
+					</td>
+				</tr>
+
+				<script>
+					var ctx = document.getElementById('@canvasId').getContext('2d');
+					new Chart(ctx, {
+						type: 'bar',
+						data: {
+							labels: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(topics)),
+							datasets: [{
+								label: 'Score',
+								data: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(scores)),
+								backgroundColor: '@backgroundColor',
+								borderColor: '@borderColor',
+								borderWidth: 1
+							}]
 						},
-						x: {
-							title: {
-								display: true,
-								text: 'Topic'
+						options: {
+							scales: {
+								y: {
+									beginAtZero: true,
+									title: {
+										display: true,
+										text: 'Score'
+									}
+								},
+								x: {
+									title: {
+										display: true,
+										text: 'Topic'
+									}
+								}
+							},
+							plugins: {
+
 							}
 						}
-					},
-					plugins: {
-						@* title: {
-							display: true,
-							text: '@month'
-						} *@
-					}
-				}
-			});
-		</script>
-	}
-	</table>
+					});
+				</script>
+			}
+		</table>
+
+	</div>
+
+	<div id="tables" style="display: none;">
+		@if (Model.DateDict != null)
+		{
+			foreach (var dateEntry in Model.DateDict)
+			{
+				<h5>@dateEntry.Key</h5>
+				<div class="table-container scrollable">
+					<table class="table" style="text-align:center">
+						<thead>
+							<tr>
+
+								<th>Trending Score</th>
+								<th>Author Name</th>
+								<th>Description</th>
+								<th>Duration</th>
+								<th colspan="2">Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							@foreach (var scoreEntry in dateEntry.Value.Reverse())
+							{
+								var authorQuote = "@" + @scoreEntry.Value[2];
+
+								<tr>
+									<td><b><i>@scoreEntry.Key.ToString("F3")</i></b></td>
+									<td><a href="https://www.tiktok.com/@authorQuote">@scoreEntry.Value[3]</a></td>
+									<td>@scoreEntry.Value[4]</td>
+									<td>@scoreEntry.Value[5]s</td>
+									<td><a href="@scoreEntry.Value[1]">Watch</a></td>
+									&nbsp;
+									<td><a href="/video/videos/@scoreEntry.Value[0]">View</a></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+				<br /><br />
+			}
+		}
+		else
+		{
+			<p>No data found.</p>
+		}
+
+
+	</div>
 </div>
 
+@section HeadContent {
+<style type="text/css">
+		/* Custom scrollbar styles */
+		.table-container {
+			text-align: center;
+			max-height: 400px;
+			overflow-y: auto;
+		}
+
+</style>
+
+}
+
+@section scripts {
+	<script>
+		function toggleDisplay() {
+			var graphs = document.getElementById("graphs");
+			var tables = document.getElementById("tables");
+			var toggleScrollContainer = document.getElementById("toggle-scroll-container");
+
+			if (graphs.style.display === "none") {
+				graphs.style.display = "block";
+				tables.style.display = "none";
+				toggleScrollContainer.style.display = "none"; // Show the scroll toggle button
+			} else {
+				graphs.style.display = "none";
+				tables.style.display = "block";
+				toggleScrollContainer.style.display = "block"; // Show the scroll toggle button
+			}
+		}
+
+		function toggleScrollable() {
+			var tableContainers = document.querySelectorAll(".table-container");
+			tableContainers.forEach(function (container) {
+				if (container.classList.contains("scrollable")) {
+					container.classList.remove("scrollable");
+					container.style.maxHeight = "none"; // Remove max-height when not scrollable
+				} else {
+					container.classList.add("scrollable");
+					container.style.maxHeight = "400px"; // Restore max-height when scrollable
+				}
+			});
+		}
+	</script>
+}

@@ -13,9 +13,9 @@ namespace Videos.UI.Pages
     {
         public HashEntry[] HashEntries { get; set; }
         public SortedDictionary<string, object[]> TopicByMonthDict { get; set; } = new SortedDictionary<string, object[]>(); //{"2024/04":[[3.0,4.0],["aaa","bb"]]}
+		public SortedDictionary<string, SortedDictionary<double, List<object>>> DateDict { get; private set; }
 
-
-        private readonly RedisDb _redisDb;
+		private readonly RedisDb _redisDb;
 		private readonly ILogger<TopicModel> _logger;
 
 		public TopicModel(RedisDb redisDb, ILogger<TopicModel> logger)
@@ -27,6 +27,7 @@ namespace Videos.UI.Pages
         public void OnGet()
         {
             SetHashEntry();
+			DateDict = GetDateDict("trending_score_videos");
 			_logger.LogInformation("A user has viewed the topic page");
 		}
 
@@ -53,6 +54,17 @@ namespace Videos.UI.Pages
             Console.WriteLine();
         }
 
+		public SortedDictionary<string, SortedDictionary<double, List<object>>> GetDateDict(string key)
+		{
+			var db = _redisDb.GetDatabase();
+			var value = db.StringGet(key);
 
-    }
+			if (!value.HasValue)
+			{
+				return null;
+			}
+
+			return JsonConvert.DeserializeObject<SortedDictionary<string, SortedDictionary<double, List<object>>>>(value);
+		}
+	}
 }
